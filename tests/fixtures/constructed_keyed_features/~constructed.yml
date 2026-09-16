@@ -1,0 +1,10 @@
+plugin: ansible.builtin.constructed
+keyed_groups:
+  - key: tier
+    prefix: tier
+    separator: _
+    default_value: none
+  - key: svcroles
+    prefix: role
+    separator: _
+    parent_group: all_roles

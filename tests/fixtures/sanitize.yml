@@ -1,0 +1,12 @@
+# Group names with characters ansible rewrites to '_' (dashes, dots, leading digit).
+all:
+  children:
+    "web-servers.prod":
+      hosts:
+        h1:
+    "123numeric":
+      hosts:
+        h2:
+    "ok_group":
+      hosts:
+        h3:

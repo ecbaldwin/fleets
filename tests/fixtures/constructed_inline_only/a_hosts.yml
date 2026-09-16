@@ -1,0 +1,7 @@
+all:
+  children:
+    filegrp:
+      hosts:
+        hfile: {}
+  hosts:
+    hinline: {region: us_east}

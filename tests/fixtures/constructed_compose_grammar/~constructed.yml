@@ -1,0 +1,21 @@
+plugin: ansible.builtin.constructed
+compose:
+  r_replace: zone | replace('-', '_')
+  r_regex: zone | regex_replace('[0-9]+', 'N')
+  r_trim: padded | trim
+  r_cap: name | capitalize
+  r_len: tags | length
+  r_first: tags | first
+  r_last: tags | last
+  r_join: tags | join('-')
+  r_concat: name ~ '-' ~ idx
+  r_add: idx + 1
+  r_sub: idx - 2
+  r_mul: idx * 3
+  r_floordiv: idx // 2
+  r_mod: idx % 3
+  r_pow: idx ** 2
+  r_slice: zone[0:2]
+  r_neg_slice: zone[:-1]
+  r_index: zone[-1]
+  r_upper: name | upper

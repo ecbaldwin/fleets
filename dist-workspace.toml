@@ -1,0 +1,18 @@
+[workspace]
+members = ["cargo:."]
+
+# Generated release automation is maintained by cargo-dist 0.32.0.
+[dist]
+cargo-dist-version = "0.32.0"
+ci = "github"
+hosting = "github"
+installers = ["shell"]
+install-path = "CARGO_HOME"
+install-updater = false
+features = ["telemetry"]
+targets = [
+    "aarch64-apple-darwin",
+    "x86_64-apple-darwin",
+    "aarch64-unknown-linux-gnu",
+    "x86_64-unknown-linux-gnu",
+]

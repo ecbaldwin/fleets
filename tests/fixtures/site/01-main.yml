@@ -1,0 +1,9 @@
+web:
+  hosts:
+    web01:
+    web02:
+  vars:
+    role: inventory_role
+db:
+  hosts:
+    db01:

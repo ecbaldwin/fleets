@@ -1,0 +1,23 @@
+# Jaeger all-in-one for local fleets tracing.
+#
+#   docker compose -f jaeger-compose.yaml up -d     # start
+#   docker compose -f jaeger-compose.yaml down       # stop + remove
+#
+# UI:        http://localhost:16686   (pick the "fleets" service)
+# OTLP/HTTP: http://localhost:4318     <- what fleets sends to by default
+# OTLP/gRPC: http://localhost:4317
+#
+# Then in ~/.config/fleets/config.toml set [tracing] enabled = true.
+
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    restart: unless-stopped
+    environment:
+      # Enable the OTLP receivers (4317 gRPC / 4318 HTTP).
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - "127.0.0.1:16686:16686"   # web UI
+      - "127.0.0.1:4317:4317"     # OTLP gRPC
+      - "127.0.0.1:4318:4318"     # OTLP HTTP

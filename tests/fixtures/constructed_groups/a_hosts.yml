@@ -1,0 +1,4 @@
+all:
+  hosts:
+    mon1: {prometheus: true}
+    mon2: {other: 1}

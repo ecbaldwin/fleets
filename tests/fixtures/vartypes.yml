@@ -1,0 +1,13 @@
+# Rich nested variable types: lists, dicts, bool, null, float, int — verifying type
+# fidelity across JSON/YAML/TOML output.
+typed:
+  hosts:
+    node1:
+      nested: {a: 1, b: [1, 2, 3]}
+      flag: false
+      ratio: 2.5
+      empty: null
+      count: 7
+  vars:
+    list_var: [x, y, z]
+    dict_var: {k: v, n: 10}

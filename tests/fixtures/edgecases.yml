@@ -1,0 +1,12 @@
+all:
+  children:
+    # group declared with no hosts, no vars, no children -> dropped from output
+    emptygroup:
+    # nested empty child
+    haschild:
+      children:
+        alsoempty:
+    populated:
+      hosts:
+        h1:
+          x: 1

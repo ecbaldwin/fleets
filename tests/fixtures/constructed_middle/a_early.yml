@@ -1,0 +1,4 @@
+all:
+  hosts:
+    early1: {lockdown: on_state}
+    early2: {lockdown: off_state}

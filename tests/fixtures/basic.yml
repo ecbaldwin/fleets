@@ -1,0 +1,28 @@
+all:
+  vars:
+    ansible_user: root
+    dns: 8.8.8.8
+  children:
+    webservers:
+      hosts:
+        web01:
+          http_port: 80
+        web02:
+          http_port: 8080
+      vars:
+        role: web
+        dns: 1.1.1.1
+    dbservers:
+      hosts:
+        db01:
+      vars:
+        role: db
+    production:
+      children:
+        webservers:
+        dbservers:
+      vars:
+        env: prod
+  hosts:
+    lonelyhost:
+      note: i belong to no group

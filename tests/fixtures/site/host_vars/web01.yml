@@ -1,0 +1,3 @@
+# host_vars override group_vars: http_port 8080 wins over group_vars' 80.
+http_port: 8080
+special: true

@@ -1,0 +1,19 @@
+all:
+  children:
+    east:
+      hosts:
+        node1:
+      vars:
+        site: east
+        ansible_group_priority: 10
+    west:
+      hosts:
+        node1:
+      vars:
+        site: west
+    # same depth as east/west; alphabetically last but lower priority than east
+    zeta:
+      hosts:
+        node1:
+      vars:
+        site: zeta

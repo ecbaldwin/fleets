@@ -1,0 +1,3 @@
+plugin: ansible.builtin.constructed
+groups:
+  prometheus: prometheus is defined

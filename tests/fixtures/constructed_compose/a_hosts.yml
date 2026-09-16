@@ -1,0 +1,27 @@
+all:
+  hosts:
+    # zone present, region derived via zone[:-1]
+    d1:
+      ip: 10.0.0.1
+      role: dpu
+      zone: us-east-01a
+    # region present, zone derived via region + "a"
+    d2:
+      ip: 10.0.0.2
+      role: dpu
+      region: us-east-02
+    # both present, explicitly unlocked
+    d3:
+      ip: 10.0.0.3
+      role: dpu
+      region: us-west-03
+      zone: us-west-03b
+      lockdown: disabled
+    # both present, locked, and a teleport address (so ansible_host != ip)
+    d4:
+      ip: 10.0.0.4
+      role: dpu
+      region: us-east-01
+      zone: us-east-01a
+      lockdown: Restricted
+      teleport: d4.teleport.example.com

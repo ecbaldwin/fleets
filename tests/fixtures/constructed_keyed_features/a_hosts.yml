@@ -1,0 +1,5 @@
+all:
+  hosts:
+    h_has: {tier: gold}
+    h_missing: {}
+    h_list: {svcroles: [db, cache]}

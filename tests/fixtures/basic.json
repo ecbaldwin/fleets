@@ -1,0 +1,17 @@
+{
+  "all": {
+    "children": {
+      "webservers": {
+        "hosts": {
+          "web01": { "http_port": 80 },
+          "web02": { "http_port": 8080 }
+        },
+        "vars": { "role": "web" }
+      }
+    },
+    "vars": { "dns": "8.8.8.8" },
+    "hosts": {
+      "lonelyhost": { "note": "no group" }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+# A host and a group sharing the name "foo" — distinct namespaces. Verifies fleets keeps
+# them separate (like ansible) in non-export modes.
+#
+# NOTE: ansible has a quirk under --export with same-name host/group (it merges the host's
+# vars into the group and empties _meta), so the harness quarantines --export for this
+# fixture. See EXPORT_QUARANTINE in tests/differential.rs.
+foo:
+  hosts:
+    foo:
+      hv: 1
+  vars:
+    gv: 2

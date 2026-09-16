@@ -1,0 +1,20 @@
+# Rust build artifacts
+/target/
+
+# Cargo: keep Cargo.lock for the binary (it's an application, not a library).
+# (Nothing to ignore here — Cargo.lock is committed for reproducible builds.)
+
+# Backtrace/debug
+*.rs.bk
+
+# Editor / IDE
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+.DS_Store
+
+# Benchmark scratch (the harness uses tmp dirs, but ignore any local output)
+/bench/*.ini
+/bench/out/

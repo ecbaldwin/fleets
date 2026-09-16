@@ -1,0 +1,5 @@
+all:
+  hosts:
+    web1: {lockdown: restricted}
+    web2: {lockdown: disabled}
+    web3: {lockdown: restricted}

@@ -1,0 +1,8 @@
+all:
+  hosts:
+    g1:
+      zone: us-east-01a
+      padded: "  hi  "
+      name: gold
+      idx: 5
+      tags: [a, b, c]

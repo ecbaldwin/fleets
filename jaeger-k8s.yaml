@@ -1,0 +1,73 @@
+# Jaeger all-in-one for local fleets tracing, on OrbStack Kubernetes.
+#
+#   kubectl apply -f jaeger-k8s.yaml      # start
+#   kubectl delete -f jaeger-k8s.yaml     # stop + remove
+#
+# OrbStack exposes LoadBalancer services on localhost, so once Ready:
+#   UI:        http://localhost:16686   (pick the "fleets" service)
+#   OTLP/HTTP: http://localhost:4318     <- what fleets sends to by default
+#   OTLP/gRPC: http://localhost:4317
+#
+# Then in ~/.config/fleets/config.toml set [tracing] enabled = true.
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: jaeger
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  namespace: jaeger
+  labels:
+    app: jaeger
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaeger
+  template:
+    metadata:
+      labels:
+        app: jaeger
+    spec:
+      containers:
+        - name: jaeger
+          image: jaegertracing/all-in-one:latest
+          env:
+            # Enable the OTLP receivers (4317 gRPC / 4318 HTTP).
+            - name: COLLECTOR_OTLP_ENABLED
+              value: "true"
+          ports:
+            - { name: ui, containerPort: 16686 }
+            - { name: otlp-grpc, containerPort: 4317 }
+            - { name: otlp-http, containerPort: 4318 }
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 16686
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger
+  namespace: jaeger
+  labels:
+    app: jaeger
+spec:
+  type: LoadBalancer
+  selector:
+    app: jaeger
+  ports:
+    - { name: ui, port: 16686, targetPort: 16686 }
+    - { name: otlp-grpc, port: 4317, targetPort: 4317 }
+    - { name: otlp-http, port: 4318, targetPort: 4318 }

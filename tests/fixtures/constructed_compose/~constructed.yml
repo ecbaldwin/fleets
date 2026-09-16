@@ -1,0 +1,15 @@
+plugin: ansible.builtin.constructed
+compose:
+  ansible_host: teleport | default(ip)
+  region: region | default(zone[:-1])
+  zone: zone | default(region + "a")
+groups:
+  locked: lockdown != "disabled"
+  unlocked: lockdown == "disabled"
+keyed_groups:
+  - key: role
+    separator: ""
+  - key: region | lower
+    separator: ""
+  - key: zone | lower
+    separator: ""

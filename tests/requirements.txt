@@ -1,0 +1,2 @@
+ansible-core==2.18.9
+tomli-w==1.2.0

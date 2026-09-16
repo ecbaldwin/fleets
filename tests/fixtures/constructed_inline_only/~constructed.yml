@@ -1,0 +1,5 @@
+plugin: ansible.builtin.constructed
+keyed_groups:
+  - key: region
+    prefix: region
+    separator: _

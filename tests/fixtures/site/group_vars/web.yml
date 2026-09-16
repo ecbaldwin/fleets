@@ -1,0 +1,3 @@
+# group_vars override inventory-source group vars: role wins over inventory_role.
+role: web
+http_port: 80

@@ -1,0 +1,12 @@
+# Mutually-referential child groups (a -> b -> a). Must not infinite-loop, and the
+# depth/traversal must converge the same way ansible's seen-group guard does.
+groupa:
+  hosts:
+    hosta:
+  children:
+    groupb:
+groupb:
+  hosts:
+    hostb:
+  children:
+    groupa:
