@@ -231,7 +231,7 @@ impl InventoryData {
             .collect();
         for h in orphans {
             let g = self.group_mut(UNGROUPED);
-            if !g.hosts.iter().any(|x| *x == h) {
+            if !g.hosts.contains(&h) {
                 g.hosts.push(h);
             }
         }
