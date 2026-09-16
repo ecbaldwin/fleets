@@ -36,8 +36,9 @@ jobs:
       - run: cargo fmt --all --check
       - run: cargo clippy --locked --all-targets --no-default-features -- -D warnings
       - run: cargo clippy --locked --all-targets --all-features -- -D warnings
-      - run: cargo test --locked --no-default-features
-      - run: cargo test --locked --all-features
+      # Differential tests run in the dedicated job with pinned Ansible dependencies.
+      - run: cargo test --locked --no-default-features -- --skip differential_
+      - run: cargo test --locked --all-features -- --skip differential_
       - run: RUSTDOCFLAGS="-D warnings" cargo doc --locked --no-deps --all-features
       - run: cargo package --locked --list
       - run: cargo package --locked
@@ -61,7 +62,8 @@ jobs:
         with:
           persist-credentials: false
       - uses: dtolnay/rust-toolchain@stable
-      - run: cargo test --locked --all-features
+      # Do not use any Ansible installation supplied by the runner image.
+      - run: cargo test --locked --all-features -- --skip differential_
 
   ansible-differential:
     name: Ansible differential oracle
