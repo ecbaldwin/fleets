@@ -1,0 +1,7 @@
+paths:
+  .github/workflows/release.yml:
+    # cargo-dist 0.32.0 generates this file; keep its output reproducible.
+    # Allow its unquoted expansions and repeated output redirects only here.
+    ignore:
+      - 'shellcheck reported issue in this script: SC2086:.+'
+      - 'shellcheck reported issue in this script: SC2129:.+'
