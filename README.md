@@ -9,6 +9,15 @@ with or endorsed by Red Hat or the Ansible project. Ansible is a trademark of Re
 
 ## Install
 
+Prebuilt binaries for macOS and Linux (x86_64/aarch64) are attached to each
+[GitHub release](https://github.com/ecbaldwin/fleets/releases). Install the latest one with:
+
+```sh
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/ecbaldwin/fleets/releases/latest/download/fleets-installer.sh | sh
+```
+
+Or install from [crates.io](https://crates.io/crates/fleets), which builds from source:
+
 ```sh
 cargo install fleets
 ```
