@@ -42,16 +42,16 @@ anyhow = "1.0.103"
 clap = { version = "4.6.1", features = ["derive"] }
 indexmap = { version = "2.14.0", features = ["serde"] }
 noyalib = { version = "0.0.15", features = ["compat-serde-yaml"] }
-opentelemetry = { version = "0.32.0", optional = true }
-opentelemetry-otlp = { version = "0.32.0", optional = true, default-features = false, features = ["http-proto", "reqwest-blocking-client"] }
-opentelemetry_sdk = { version = "0.32.1", optional = true, features = ["trace"] }
+opentelemetry = { version = "0.33.0", optional = true }
+opentelemetry-otlp = { version = "0.33.0", optional = true, default-features = false, features = ["http-proto", "reqwest-blocking-client"] }
+opentelemetry_sdk = { version = "0.33.0", optional = true, features = ["trace"] }
 regex = "1.12.4"
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = { version = "1.0.150", features = ["preserve_order"] }
 thiserror = "2.0.18"
 toml = "1.1.2"
 tracing = "0.1.44"
-tracing-opentelemetry = { version = "0.33.0", optional = true }
+tracing-opentelemetry = { version = "0.34.0", optional = true }
 tracing-subscriber = { version = "0.3.23", optional = true, features = ["registry", "env-filter"] }
 
 [dev-dependencies]
